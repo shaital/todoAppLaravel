@@ -1,0 +1,22 @@
+mysql task:
+===============
+
+create a valid MYSQL "SELECT" query on the attached usertransactions table
+
+
+definitions:
+ORDER = transaction (row) with type_id = 1
+BONUS = transaction (row) with type_id = 9
+
+
+all bonuses with status=1 and identifier=NULL shuld be matched to an ORDER according to these conditions:
+ - ORDER.create_date should be within 30 days after BONUS.create_date 
+ - ORDER.amount>4. 
+ 
+
+the output should be a table like this:
+
+bonus.id | matched_order.id | bonus.status | matched_order.status | bonus.create_date | matched_order.create_date
+
+
+select matched_order.id,matched_order.status,matched_order.create_date,bonus.id ,bonus.status,bonus.create_date from transacions AS matched_order left join transacions AS bonus on(bonus.id = matched_order.id and bonus.status=1 and bonus.identifier is null and matched_order.create_date >=DATE_SUB(CURDATE(), INTERVAL 1 MONTH) and matched_order.amount >= 4) WHERE (matched_order.type_id =1 or bonus.type_id =9)

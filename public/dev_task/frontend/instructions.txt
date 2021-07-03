@@ -1,0 +1,10 @@
+task:
+ - read images folder 
+ - render to browser as in design (attached)
+ - make logos sortable (drag and drop)
+ - "save" button should save the order to file (next time the page is open the order is shown as saved)
+
+please use:
+ * CSS - bootstrap
+ * JS - jquery or vanilla
+ * backend - PHP
